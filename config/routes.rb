@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   get 'users', to: 'users#index', as: 'users_index'
+
+  resources :foods, only: %i[index new create destroy]
 end
