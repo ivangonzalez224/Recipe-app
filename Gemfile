@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.0.6'
+ruby '3.2.2'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
@@ -52,6 +52,7 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'webdrivers'
 end
 
 group :development do
@@ -70,4 +71,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'poltergeist'
+  gem 'rails-controller-testing'
 end
