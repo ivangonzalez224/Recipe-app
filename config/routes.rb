@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "recipes#index"
   get 'users', to: 'users#index', as: 'users_index'
 
   resources :foods, only: %i[index new create destroy]

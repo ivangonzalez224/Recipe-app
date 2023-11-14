@@ -31,6 +31,8 @@
     <%= form.check_box :public %>
   </div>
 
+  <%= form.hidden_field :user_id, value: current_user.id.to_int %>
+
   <div>
     <%= form.submit %>
   </div>
