@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index', as: 'users_index'
 
   resources :foods, only: %i[index new create destroy]
-  resources :recipes, only: %i[index new create destroy]
+  resources :recipes, only: %i[index new create destroy show edit update]
   resources :recipe_foods, only: %i[index new create destroy]
 end

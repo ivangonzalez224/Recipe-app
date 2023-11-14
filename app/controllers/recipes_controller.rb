@@ -6,7 +6,9 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
 
   # GET /recipes/new
   def new
@@ -14,7 +16,9 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1/edit
-  def edit; end
+  def edit
+  @recipe = Recipe.find(params[:id])
+  end
 
   # POST /recipes or /recipes.json
   def create
@@ -46,6 +50,7 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
+    @recipe = Recipe.find(params[:id])
     @recipe.destroy!
 
     respond_to do |format|
