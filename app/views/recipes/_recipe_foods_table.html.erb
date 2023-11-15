@@ -1,5 +1,5 @@
 <div class="container food-container">
-    <%= link_to 'Add Ingredient', new_recipe_food_path, class: "add-food-btn" %>
+    <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: "add-food-btn" %>
 
     <table>
       <thead>
@@ -7,7 +7,6 @@
         <th class="food-name">
             <div class="header-container">
                 Name
-                <%= link_to '', recipe_foods_path(order_by: 'name'), class: 'triangle-order' %>
             </div>
             </th>
         <th class="measurement">Measurement Unit</th>

@@ -1,10 +1,22 @@
 <nav class="navbar navbar-expand-lg bg-light">
-    <a id="navbar-brand" href="/">Public Recipes</a>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Public Recipes</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/recipes">My Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/foods">My foods</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shopping_list">Shopping List</a>
+        </li>
+      </ul>
       <ul class="navbar-nav">
-      <li><%= link_to "My Recipes", recipes_path, class: "nav-link" %></li>
-      <li><%= link_to "My Foods", foods_path, class: "nav-link" %></li>
-      <li><%= link_to "Shopping list", shopping_list_path, class: "nav-link" %></li>
         <% if current_user %>
           <li class="nav-item"> <%= link_to "Edit Account", edit_user_registration_path, class: "nav-link" %></li>
           <li class="nav-item"> <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
@@ -14,4 +26,6 @@
         <% end %>
       </ul>
     </div>
+  </div>
 </nav>
+

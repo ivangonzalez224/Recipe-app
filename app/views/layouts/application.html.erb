@@ -8,19 +8,36 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "food_list.css" %>
   </head>
 
   <body>
   <%= render "layouts/navbar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  
+  <div class="container mt-4">
+    <!-- Bootstrap Alert for Notice -->
+    <% flash.each do |key, value| %>
+      <div class="alert alert-info alert-dismissible fade show d-none" role="alert">
+        <%= value %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
+    <!-- Bootstrap Alert for Alert -->
+    <div class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+      <%= alert %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
     <%= yield %>
-    <script>
-      window.addEventListener('unload', function() {
-        document.cookie.split(";").forEach(function(c) {
-          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-        });
+  </div>
+
+  <script>
+    window.addEventListener('unload', function() {
+      document.cookie.split(";").forEach(function(c) {
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
       });
-    </script>
+    });
+  </script>
   </body>
 </html>
