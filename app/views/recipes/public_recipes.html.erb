@@ -1,1 +1,6 @@
-<%= render @recipes %>
+<% @recipes.each do |recipe| %>
+  <%= render recipe %>
+  <p>
+    <%= link_to "Show this recipe", recipe %>
+  </p>
+<% end %>

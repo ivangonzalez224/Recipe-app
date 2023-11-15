@@ -2,10 +2,13 @@
 
 <%= render "recipe_show", recipe: @recipe %>
 
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
+<% if @recipe.user == current_user %>
+  <div>
+    <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+    <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+  </div>
+<% end %>
 
-</div>
+<%= render "recipe_foods_table", foods: @ingredients %>
 
-<%= button_to "Destroy this recipe", @recipe, method: :delete %>
+<%= link_to "Back to recipes", recipes_path %>
