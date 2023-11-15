@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_food, only: %i[show edit update destroy]
+  before_action :find_food, only: %i[destroy]
 
   def index
     @foods = if params[:order_by] == 'name'
