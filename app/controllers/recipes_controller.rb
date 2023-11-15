@@ -1,13 +1,14 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
-
+  before_action :authenticate_user!
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
 
   # GET /recipes/new
   def new
@@ -15,7 +16,9 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1/edit
-  def edit; end
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
 
   # POST /recipes or /recipes.json
   def create
@@ -34,6 +37,7 @@ class RecipesController < ApplicationController
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
+    @recipe = Recipe.find(params[:id])
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
@@ -47,12 +51,18 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
+    @recipe = Recipe.find(params[:id])
     @recipe.destroy!
 
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # Public Recipes
+  def public_recipes
+    @recipes = Recipe.where(public: true)
   end
 
   private
@@ -64,6 +74,6 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :description, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :description, :public, :user_id)
   end
 end
