@@ -12,6 +12,17 @@ class FoodsController < ApplicationController
     @food = Food.new
   end
 
+  def create
+    clean_new_name = clean_name(food_params[:name])
+    old_food = current_user.foods.find_by(name: clean_new_name)
+
+    if old_food
+      update_food(old_food)
+    else
+      create_new_food(clean_new_name)
+    end
+  end
+
   private
 
   def find_food
@@ -38,5 +49,14 @@ class FoodsController < ApplicationController
     total_cost = old_cost + new_cost
     new_unit_price = total_cost / new_quantity
     food.update(quantity: new_quantity, price: new_unit_price)
+  end
+
+  def create_new_food(new_name)
+    @food = current_user.foods.build(food_params.merge(name: new_name))
+    if @food.save
+      redirect_to foods_path, notice: 'The food was successfully created.'
+    else
+      render :new
+    end
   end
 end
