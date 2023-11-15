@@ -21,4 +21,8 @@ class FoodsController < ApplicationController
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
+
+  def clean_name(food_name)
+    food_name.strip.downcase.titleize.singularize
+  end
 end
