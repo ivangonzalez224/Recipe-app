@@ -1,0 +1,30 @@
+<head>
+  <link rel="stylesheet" href="/assets/stylesheets/food_list.css">
+</head>
+<body>
+  <div class="main-container">
+    <h1 class="add-food-title">Add New Food</h1>
+  <div class="add-food-container">
+    
+
+    <%= form_with(model: @food, local: true) do |form| %>
+
+        <div class="field">
+            <%= form.text_field :name, placeholder: "Food Name", autocomplete: "name", class: 'input-food' %>
+        </div>
+        <div class="field">
+            <%= form.select :measurement_unit, options_for_select(['g', 'ml', 'unit']), {}, { class: 'input-food' } %>
+        </div>
+        <div class="field">
+            <%= form.text_field :price, placeholder: "Price", class: 'input-food', step: 'any' %>
+        </div>
+        <div class="field">
+            <%= form.text_field :quantity, placeholder: "Quantity", class: 'input-food', step: 'any' %>
+        </div>
+        <div class="actions">
+            <%= form.submit "Add Food", class: 'post-add-btn' %>
+        </div>
+    <% end %>
+  </div>
+  </div>
+</body>    
