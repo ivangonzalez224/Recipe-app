@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:public_recipes]
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.where(user_id: current_user.id)
