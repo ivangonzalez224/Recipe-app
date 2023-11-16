@@ -21,6 +21,11 @@
   margin-bottom: 3%;
 }
 
+.cancel-btn:hover {
+  background-color: rgb(153, 82, 63);
+  cursor: pointer;
+}
+
 .back-btn {
   text-decoration: none;
   color: #000;

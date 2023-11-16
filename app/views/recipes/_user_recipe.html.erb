@@ -1,7 +1,7 @@
 <div class="public-recipe" id="<%= dom_id recipe %>">
   <div>
     <h2><%= link_to recipe.name, recipe %></h2>
-    <%= button_to "Destroy this recipe", recipe, method: :delete %>
+    <%= button_to "Destroy this recipe", recipe, method: :delete, class: "cancel-btn" %>
   </div>
   <div>
     <p><%= recipe.description %></p>

@@ -3,7 +3,7 @@
     <h2><%= link_to recipe.name, recipe %></h2>
     <p>By: <%= recipe.user.name %></p>
     <% if current_user == recipe.user %>
-      <%= button_to "Destroy this recipe", recipe, method: :delete %>
+      <%= button_to "Destroy this recipe", recipe, method: :delete, class: "cancel-btn" %>
     <% end %>
   </div>
   <div>
