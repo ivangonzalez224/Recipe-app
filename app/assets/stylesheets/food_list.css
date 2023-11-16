@@ -80,6 +80,7 @@ table {
 }
 
 th,
+.add-foo
 td {
   border: 1px solid #ccc;
   padding: 10px;
@@ -125,8 +126,7 @@ tr:nth-child(even) {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-.add-food-btn:hover {
+d-btn:hover {
   background-color: #fff;
   border: 1px solid rgb(61, 170, 49);
   color: rgb(61, 170, 49);
