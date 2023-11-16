@@ -41,16 +41,17 @@
       <%= form.hidden_field :user_id, value: current_user.id.to_int %>
 
       <div class="actions">
-        <%= form.submit "#{message} Recipe", class: 'post-add-btn'  %>
+        <%= form.submit "#{message} Recipe", class: 'post-add-btn' %>
       </div>
     <% end %>
 
     <div>
-    <%= link_to "< Back to recipes", recipes_path %>
     <% if message == "Edit" %>
     <br>
-      <%= link_to "Show this recipe", @recipe %>
+      <%= link_to "< Back to this recipe", @recipe %>
     <% end %>
+    <br>
+    <%= link_to "< Back to recipes", recipes_path %>
     </div>
   </div>
 </div>

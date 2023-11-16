@@ -16,7 +16,7 @@
 
     <% if @recipe.user == current_user %>
       <div class="table-buttons">
-        <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "edit-btn" %>
+        <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "edit-btn cancel-btn" %>
         <%= button_to "Destroy this recipe", @recipe, method: :delete, class: "cancel-btn" %>
       </div> 
     <% end %>
