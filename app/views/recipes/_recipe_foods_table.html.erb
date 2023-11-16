@@ -23,7 +23,7 @@
             <td class=" ">
                     <%= link_to "Modify", class: "link to"%>
                     <%= "&nbsp;" "&nbsp;".html_safe %>
-                    <%= button_to "Remove", recipe_recipe_food_path(item.id), method: :delete %>
+                    <%= button_to "Remove", [@recipe, item], method: :delete %>
             </td>
         </tr>
         <% end %>
