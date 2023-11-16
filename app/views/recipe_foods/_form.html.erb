@@ -11,10 +11,17 @@
     </div>
   <% end %>
 
+  <div class=" ">
+    <%= form.label :food_id %>
+    <%= form.select :food_id, options_for_select(food.map { |p| [p.name, p.id] }), include_blank: 'Choose an ingredient' %>
+  </div>
+
   <div>
     <%= form.label :quantity, style: "display: block" %>
     <%= form.number_field :quantity %>
   </div>
+
+  <%= form.hidden_field :recipe_id, value: recipe.id %>
 
   <div>
     <%= form.submit %>

@@ -13,6 +13,7 @@ class RecipeFoodsController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new
+    @food = Food.all
   end
 
   # GET /recipe_foods/1/edit
@@ -25,7 +26,7 @@ class RecipeFoodsController < ApplicationController
 
     respond_to do |format|
       if @recipe_food.save
-        format.html { redirect_to recipe_food_url(@recipe_food), notice: 'Recipe food was successfully created.' }
+        format.html { redirect_to new_recipe_recipe_food_path(@recipe), notice: 'Recipe food was successfully created.' }
         format.json { render :show, status: :created, location: @recipe_food }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,6 +67,6 @@ class RecipeFoodsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_food_params
-    params.require(:recipe_food).permit(:quantity)
+    params.require(:recipe_food).permit(:quantity, :recipe_id, :food_id)
   end
 end
