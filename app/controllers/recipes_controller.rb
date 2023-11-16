@@ -7,9 +7,9 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    @recipe = Recipe.find(params[:id])
-    @ingredients = RecipeFood.where(recipe_id: @recipe.id)
-    @foods = @recipe.recipe_foods
+    @recipe = Recipe.includes(:recipe_foods, :user).find(params[:id])
+    @ingredients = @recipe.recipe_foods
+    @foods = @recipe.recipe_foods.includes(:food)
   end
 
   # GET /recipes/new
@@ -64,12 +64,12 @@ class RecipesController < ApplicationController
 
   # Public Recipes
   def public_recipes
-    @recipes = Recipe.where(public: true)
+    @recipes = Recipe.where(public: true).includes(:user)
   end
 
   def shopping_list
     @user = current_user
-    @recipes = @user.recipes || []
+    @recipes = @user.recipes.includes(recipe_foods: :food) || []
     @user_stock = calculate_stock
     @foods_missing = calculate_missing
     @foods_missing = sort_foods_needed(@foods_missing)
