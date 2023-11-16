@@ -1,0 +1,32 @@
+<div class="container food-container">
+    <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: "add-food-btn" %>
+
+    <table>
+      <thead>
+        <tr>
+        <th class="food-name">
+            <div class="header-container">
+                Name
+            </div>
+            </th>
+        <th class="quantity">Quantity</th>
+        <th class="price">Value</th>
+        <th class="actions">Actions</th>
+        </tr>
+      </thead>
+    <tbody>
+        <% foods.each do |item| %>
+        <tr>
+            <td class="food-name"><%= item.food.name %></td>
+            <td class="quantity"><%= item.quantity %> <%= item.food.measurement_unit %></td>
+            <td class="price">$<%= item.quantity * item.food.price %></td>
+            <td class=" ">
+                <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item) %>
+                <%= "&nbsp;" "&nbsp;".html_safe %>
+                <%= button_to "Remove", [@recipe, item], method: :delete %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+  </div>
