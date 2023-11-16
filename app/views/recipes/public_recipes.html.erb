@@ -1,6 +1,13 @@
-<% @recipes.each do |recipe| %>
-  <%= render recipe %>
-  <p>
-    <%= link_to "Show this recipe", recipe %>
-  </p>
-<% end %>
+<div class="flex-container">
+
+  <h1>Welcome to Recipes.com!</h1>
+
+  <% if @recipes.empty? %>
+    <p>There are no public recipes yet.</p>
+  <% end %>
+
+  <% @recipes.each do |recipe| %>
+    <%= render recipe %>
+  <% end %>
+
+</div>

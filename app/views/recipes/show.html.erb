@@ -2,29 +2,27 @@
 
 <div class=" " id=" ">
   <h1>Recipe <%= @recipe.id %> - <%= @recipe.name %></h1>
+
   <div class=" ">
-        <p>Preparation time: <%= @recipe.preparation_time %> hour</p>
-        
-        
-        <div class=" ">
-            <p>Public: <%= @recipe.public ? "Yes" : "No" %></p>
-            <div class=" ">
-                <input type="checkbox" id="toggle1" class=" " <%= @recipe.public ? 'checked' : '' %>>
-                <label class=" " for="toggle1">
-                    <div class=" "></div>
-                </label>       
-            </div>
-        </div>
-    </div>
-
-    <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
-    
-    <p><%= @recipe.description %></p>
-
+    <p>Preparation time: <%= @recipe.preparation_time %> hour</p>  
     <div class=" ">
-        <%= link_to "Generate shopping list", shopping_list_path, class: " "%>
-        <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: " "%>        
-    </div>  
+      <p>Public: <%= @recipe.public ? "Yes" : "No" %></p>
+      <div class=" ">
+        <input type="checkbox" id="toggle1" class=" " <%= @recipe.public ? 'checked' : '' %>>
+        <label class=" " for="toggle1">
+          <div class=" "></div>
+        </label>       
+      </div>
+    </div>
+  </div>
+
+  <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
+  <p><%= @recipe.description %></p>
+
+  <div class=" ">
+    <%= link_to "Generate shopping list", shopping_list_path, class: " "%>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: " "%>        
+  </div>  
 </div>
 
 <div class="table">

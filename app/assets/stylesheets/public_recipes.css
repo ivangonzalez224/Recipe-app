@@ -1,0 +1,27 @@
+.public-recipe {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  border: 1px solid black;
+  margin: 1em;
+}
+
+.public-recipe h2{
+  margin: 0;
+  padding: 10px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.public-recipe p{
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

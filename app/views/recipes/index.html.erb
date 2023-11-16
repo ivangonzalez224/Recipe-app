@@ -1,14 +1,9 @@
-<p style="color: green"><%= notice %></p>
+<div class="flex-container">
+  <h1>My Recipes</h1>
 
-<h1>Recipes</h1>
-
-<div id="recipes">
   <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
+    <%= render "user_recipe", recipe: recipe %>
   <% end %>
-</div>
 
-<%= link_to "New recipe", new_recipe_path %>
+  <%= link_to "New recipe", new_recipe_path %>
+</div>

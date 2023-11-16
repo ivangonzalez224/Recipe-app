@@ -17,4 +17,8 @@ class Recipe < ApplicationRecord
     end
     tot_prices.sum
   end
+
+  def give_price
+    recipe_foods.sum { |rf| rf.quantity * rf.food.price }
+  end
 end
