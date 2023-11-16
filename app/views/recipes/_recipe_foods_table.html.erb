@@ -21,9 +21,9 @@
             <td class="quantity"><%= item.quantity %> <%= item.food.measurement_unit %></td>
             <td class="price">$<%= item.quantity * item.food.price %></td>
             <td class=" ">
-                    <%= link_to "Modify", class: "link to"%>
-                    <%= "&nbsp;" "&nbsp;".html_safe %>
-                    <%= button_to "Remove", [@recipe, item], method: :delete %>
+                <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item) %>
+                <%= "&nbsp;" "&nbsp;".html_safe %>
+                <%= button_to "Remove", [@recipe, item], method: :delete %>
             </td>
         </tr>
         <% end %>
