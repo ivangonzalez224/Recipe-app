@@ -62,6 +62,14 @@ ul li a {
   color: #fff; /* Change the active link color */
 }
 
+.navbar-signout {
+  background-color: #0000;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .navbar-nav .nav-item:last-child {
   margin-right: 15px;
 }
