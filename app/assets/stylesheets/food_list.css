@@ -178,4 +178,5 @@ tr:nth-child(even) {
   border-radius: 5px;
   padding: 1% 5%;
   cursor: pointer;
+  margin: 5px;
 }

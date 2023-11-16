@@ -1,65 +1,62 @@
 <p style="color: green"><%= notice %></p>
-
-<div class=" " id=" ">
+<div class="flex-container">
   <h1>Recipe <%= @recipe.id %> - <%= @recipe.name %></h1>
 
-  <div class=" ">
-    <p>Preparation time: <%= @recipe.preparation_time %> hour</p>  
-    <div class=" ">
-      <p>Public: <%= @recipe.public ? "Yes" : "No" %></p>
-      <div class=" ">
-        <input type="checkbox" id="toggle1" class=" " <%= @recipe.public ? 'checked' : '' %>>
-        <label class=" " for="toggle1">
-          <div class=" "></div>
-        </label>       
-      </div>
+  <div class="recipe-info">
+    <div class="recipe text"
+      <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
+      <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
+      <p><%= @recipe.description %></p>
     </div>
-  </div>
 
-  <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
-  <p><%= @recipe.description %></p>
-
-  <div class=" ">
-    <%= link_to "Generate shopping list", shopping_list_path, class: " "%>
-    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: " "%>        
-  </div>  
-</div>
-
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Food</th>
-                <th>Quantity</th>
-                <th>Value</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @foods.each do |item| %>
-                <tr>
-                    <td><%= item.food.name %></td>
-                    <td><%= item.quantity %></td>
-                    <td><%= item.quantity * item.food.price %></td>
-                    <td class=" ">
-                        <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item), class: "link to"%>
-                        <%= "&nbsp;" "&nbsp;".html_safe %>
-                        <%= button_to "Remove", [@recipe, item], method: :delete %>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div> 
-  <div>
-    
-    <%= link_to "Back to recipes", recipes_path %>
     <% if @recipe.user == current_user %>
-    
-<% end %>
-    <div>
-      <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-      <%= button_to "Destroy this recipe", @recipe, method: :delete %>
-    </div> 
+      <div class="public-toggle">
+        <label class=" " for="toggle1">Public</label>
+        <input type="checkbox" id="toggle1" class=" " <%= @recipe.public ? 'checked' : '' %>>
+      </div>
+    <% end %>
   </div>
+    
+  <div class="table-buttons">
+    <%= link_to "Generate shopping list", shopping_list_path, class: "add-food-btn"%>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: "add-food-btn"%>        
+  </div>  
 
+  <div class="recipe-foods-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |item| %>
+          <tr>
+            <td><%= item.food.name %></td>
+            <td><%= item.quantity %> <%= item.food.measurement_unit %></td>
+            <td>$<%= item.quantity * item.food.price %></td>
+            <td class="action-buttons">
+              <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item), class: 'button-link'%>
+              <%= button_to "Remove", [@recipe, item], method: :delete, class: 'button-link' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> 
+
+  <div class="footer">
+
+    <% if @recipe.user == current_user %>
+      <div>
+        <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+        <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+      </div> 
+    <% end %>
+
+    <%= link_to "Back to recipes", recipes_path %>
+  </div>
+</div>
