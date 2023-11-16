@@ -62,8 +62,8 @@ ul li a {
   color: #fff; /* Change the active link color */
 }
 
-.navbar-signout{
-  background-color: #00000000;
+.navbar-signout {
+  background-color: #0000;
   border: none;
   color: #fff;
   font-weight: bold;
