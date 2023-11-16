@@ -1,58 +1,22 @@
-<p style="color: green"><%= notice %></p>
 <div class="flex-container">
   <h1>Recipe <%= @recipe.id %> - <%= @recipe.name %></h1>
 
-  <div class="recipe-info">
-    <div class="recipe text"
-      <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
-      <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
-      <p><%= @recipe.description %></p>
-    </div>
-
-    <% if @recipe.user == current_user %>
-      <div class="public-toggle">
-        <label class=" " for="toggle1">Public</label>
-        <input type="checkbox" id="toggle1" class=" " <%= @recipe.public ? 'checked' : '' %>>
-      </div>
-    <% end %>
-  </div>
+  <%= render "recipe_info" %>
     
   <div class="table-buttons">
     <%= link_to "Generate shopping list", shopping_list_path, class: "add-food-btn"%>
-    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: "add-food-btn"%>        
+    <% if @recipe.user == current_user %>
+      <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: "add-food-btn"%>
+    <% end %>      
   </div>  
 
-  <div class="recipe-foods-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Food</th>
-          <th>Quantity</th>
-          <th>Value</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @foods.each do |item| %>
-          <tr>
-            <td><%= item.food.name %></td>
-            <td><%= item.quantity %> <%= item.food.measurement_unit %></td>
-            <td>$<%= item.quantity * item.food.price %></td>
-            <td class="action-buttons">
-              <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item), class: 'button-link'%>
-              <%= button_to "Remove", [@recipe, item], method: :delete, class: 'button-link' %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div> 
+  <%= render "recipe_foods_table" %>
 
   <div class="footer">
 
     <% if @recipe.user == current_user %>
-      <div>
-        <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+      <div class="table-buttons">
+        <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %>
         <%= button_to "Destroy this recipe", @recipe, method: :delete %>
       </div> 
     <% end %>
