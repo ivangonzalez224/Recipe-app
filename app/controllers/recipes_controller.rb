@@ -66,7 +66,81 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(public: true)
   end
 
+  def shopping_list
+    @user = current_user
+    @recipes = @user.recipes || []
+    @user_stock = calculate_stock
+    @foods_missing = calculate_missing
+    @foods_missing = sort_foods_needed(@foods_missing)
+    @buy_foods = calculate_buy(@foods_missing, @user_stock)
+    @total_price = calculate_total_price
+  end
+
+  def sort_foods_needed(foods_missing)
+    sort = params[:sort_param]
+    case sort
+    when 'name_asc'
+      foods_missing.sort.to_h
+    when 'name_desc'
+      foods_missing.sort.reverse.to_h
+    when 'price_asc'
+      foods_missing.sort_by { |food_name, _| Food.getting_price(food_name) }.to_h
+    when 'price_desc'
+      foods_missing.sort_by { |food_name, _| Food.getting_price(food_name) }.reverse.to_h
+    else
+      foods_missing
+    end
+  end
+
   private
+
+  def calculate_stock
+    stock = {}
+    @user.foods.each do |food|
+      if stock.key?(food.name)
+        stock[food.name] += food.quantity.to_i
+      else
+        stock[food.name] = food.quantity.to_i
+      end
+    end
+    stock
+  end
+
+  def calculate_missing
+    foods_missing = {}
+    @user.recipes.includes(recipe_foods: :food).each do |recipe|
+      recipe.recipe_foods.each do |recipe_food|
+        food = recipe_food.food
+        next if recipe_food.quantity.blank?
+
+        if foods_missing.key?(food.name)
+          foods_missing[food.name] += recipe_food.quantity.to_i
+        else
+          foods_missing[food.name] = recipe_food.quantity.to_i
+        end
+      end
+    end
+    foods_missing
+  end
+
+  def calculate_buy(foods_missing, user_stock)
+    buy_foods = {}
+    foods_missing.each do |k, v|
+      quantity_missing = [0, v - (user_stock[k] || 0)].max
+      buy_foods[k] = quantity_missing if quantity_missing.positive?
+    end
+    buy_foods
+  end
+
+  def calculate_total_price
+    total_price = 0
+    @foods_missing.each do |k, v|
+      price = Food.getting_price(k)
+      quantity_missing = [0, v - (@user_stock[k] || 0)].max
+      total_price += quantity_missing * price
+    end
+    total_price
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
