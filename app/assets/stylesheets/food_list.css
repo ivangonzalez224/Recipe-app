@@ -120,7 +120,7 @@ tr:nth-child(odd) {
 
 .add-food-btn {
   width: 15%;
-  min-width: fit-content;
+  min-width: max-content;
   height: 40px;
   line-height: 40px;
   margin: 3% auto;

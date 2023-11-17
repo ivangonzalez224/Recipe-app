@@ -8,28 +8,27 @@
   background-color: rgb(218, 215, 205);
 }
 
-.main-title{
+.main-title {
   font-size: 2em;
   font-weight: bold;
   margin: 0;
   padding: 10px;
-
 }
 
-.public-recipe h2{
+.public-recipe h2 {
   margin: 0;
   padding: 10px;
   font-size: 2em;
   font-weight: bold;
 }
 
-.public-recipe p{
+.public-recipe p {
   margin: 0;
   padding: 10px;
   font-size: 1.1em;
 }
 
-.flex-container{
+.flex-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,13 +83,12 @@
   right: 0;
   bottom: 0;
   background-color: gray;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
-/* Describe the white ball's location 
-    and appearance in the slider. */
-.slider:before {
+/* Describe the white ball's location and appearance in the slider. */
+.slider::before {
   position: absolute;
   content: "";
   height: 26px;
@@ -98,18 +96,17 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
-/* Modify the slider's background color to 
-    green once the checkbox has been selected. */
-input:checked+.slider {
+/* Modify the slider's background color to green once the checkbox has been selected. */
+input:checked + .slider {
   background-color: green;
 }
 
-/* When the checkbox is checked, shift the 
+/* When the checkbox is checked, shift the
     white ball towards the right within the slider. */
-input:checked+.slider:before {
+input:checked + .slider::before {
   transform: translateX(26px);
 }
