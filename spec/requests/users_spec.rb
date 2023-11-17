@@ -6,5 +6,10 @@ RSpec.describe 'UsersController', type: :request do
       get '/users/sign_up'
       expect(response).to have_http_status(200)
     end
+
+    it 'returns an error response for a wrong path' do
+        get '/users/failed_path'
+        expect(response).to have_http_status(404)
+      end
   end
 end  
