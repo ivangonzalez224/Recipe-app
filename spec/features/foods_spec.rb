@@ -6,4 +6,10 @@ RSpec.describe 'foods path', type: :feature do
 
     expect(page).to have_content('You need to sign in or sign up before continuing')
   end
-end  
+
+  it 'displays the correct selector when visits foods without sign in' do
+    visit foods_path
+
+    expect(page).to have_selector('input.post-add-btn')
+  end
+end
