@@ -1,14 +1,14 @@
 <div class="recipe-info">
-<div class="recipe text"
-  <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
-  <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
-  <p><%= @recipe.description %></p>
-</div>
-
-<% if @recipe.user == current_user %>
-  <div class="public-toggle">
-    <label class=" " for="toggle1">Public</label>
-    <input type="checkbox" id="toggle1" class=" " <%= @recipe.public ? 'checked' : '' %>>
+  <div class="recipe text">
+    <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
+    <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
+    <p><%= @recipe.description %></p>
   </div>
-<% end %>
+
+  <% if @recipe.user == current_user %>
+    <div class="public-toggle">
+      <label class=" " for="toggle1">Public</label>
+      <input class="public-checkbox" type="checkbox" id="public-toggle" data-recipe-id="<%= @recipe.id %>" class="public-checkbox" <%= @recipe.public ? 'checked' : '' %> data-turbo-action="false">
+    </div>
+  <% end %>
 </div>
