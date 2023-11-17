@@ -1,0 +1,9 @@
+<div class="flex-container">
+  <h1>My Recipes</h1>
+
+  <% @recipes.each do |recipe| %>
+    <%= render "user_recipe", recipe: recipe %>
+  <% end %>
+
+  <%= link_to "New recipe", new_recipe_path, class: "add-food-btn" %>
+</div>

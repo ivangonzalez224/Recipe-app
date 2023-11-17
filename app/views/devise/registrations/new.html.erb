@@ -1,0 +1,46 @@
+<div class="main-div">
+  <h2 class="add-food-title">Sign up</h2>
+  <div class="add-food-container">
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: 'input-food' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-food' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, "Email confirmation" %><br />
+        <%= f.email_field :email, autocomplete: "email", class: 'input-food' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'input-food' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-food' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: 'post-add-btn' %>
+      </div>
+    <% end %>
+    <div class="bottom-links">
+      <%= link_to "Log in", new_session_path(resource_name) %>
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+    </div>
+  </div>
+</div>
+

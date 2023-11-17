@@ -1,0 +1,25 @@
+<div class="flex-container">
+  <h1>Recipe <%= @recipe.id %> - <%= @recipe.name %></h1>
+
+  <%= render "recipe_info" %>
+    
+  <div class="table-buttons">
+    <%= link_to "Generate shopping list", shopping_list_path, class: "add-food-btn"%>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: "add-food-btn"%>
+  </div>  
+
+  <%= render "recipe_foods_table" %>
+
+  <div class="footer">
+
+    <% if @recipe.user == current_user %>
+      <div class="table-buttons">
+        <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "edit-btn cancel-btn" %>
+        <%= button_to "Destroy this recipe", @recipe, method: :delete, class: "cancel-btn" %>
+      </div> 
+    <% end %>
+
+    <%= link_to "< Back to My Recipes", recipes_path %>
+  </div>
+</div>
+

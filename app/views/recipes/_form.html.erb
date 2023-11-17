@@ -1,0 +1,57 @@
+<div class="main-div">
+  <h2 class="add-food-title"><%= message %> Recipe</h2>
+  <div class="add-food-container">
+    <%= form_with(model: recipe) do |form| %>
+      <% if recipe.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+          <ul>
+            <% recipe.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name, class: 'input-food' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :preparation_time, style: "display: block" %>
+        <%= form.number_field :preparation_time, class: 'input-food' %>
+      </div>
+          
+      <div class="field">
+        <%= form.label :cooking_time, style: "display: block" %>
+        <%= form.number_field :cooking_time, class: 'input-food' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :description, style: "display: block" %>
+        <%= form.text_area :description, class: 'input-food' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :public, style: "display: block" %>
+        <%= form.check_box :public %>
+      </div>
+
+      <%= form.hidden_field :user_id, value: current_user.id.to_int %>
+
+      <div class="actions">
+        <%= form.submit "#{message} Recipe", class: 'post-add-btn' %>
+      </div>
+    <% end %>
+
+    <div>
+    <% if message == "Edit" %>
+    <br>
+      <%= link_to "< Back to this recipe", @recipe %>
+    <% end %>
+    <br>
+    <%= link_to "< Back to recipes", recipes_path %>
+    </div>
+  </div>
+</div>

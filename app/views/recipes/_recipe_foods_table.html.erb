@@ -1,0 +1,25 @@
+<div class="recipe-foods-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |item| %>
+          <tr>
+            <td><%= item.food.name %></td>
+            <td><%= item.quantity %> <%= item.food.measurement_unit %></td>
+            <td>$<%= item.quantity * item.food.price %></td>
+            <td class="action-buttons">
+              <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item), class: 'button-link'%>
+              <%= button_to "Remove", [@recipe, item], method: :delete, class: 'button-link' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> 

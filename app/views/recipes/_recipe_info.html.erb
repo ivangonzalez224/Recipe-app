@@ -1,0 +1,17 @@
+<div class="recipe-info">
+  <div class="recipe text">
+    <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
+    <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
+    <p><%= @recipe.description %></p>
+  </div>
+
+  <% if @recipe.user == current_user %>
+  <div class="toggle-div">
+    <p>Public: </p> 
+    <label class="toggle">
+      <input type="checkbox" class="public-checkbox" data-recipe-id="<%= @recipe.id %>" <%= @recipe.public ? 'checked' : '' %>>
+      <span class="slider"></span>
+    </label>
+    </div>
+  <% end %>
+</div>

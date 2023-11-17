@@ -1,0 +1,13 @@
+<div class="public-recipe" id="<%= dom_id recipe %>">
+  <div>
+    <h2><%= link_to recipe.name, recipe %></h2>
+    <p>By: <%= recipe.user.name %></p>
+    <% if current_user == recipe.user %>
+      <%= button_to "Destroy this recipe", recipe, method: :delete, class: "cancel-btn" %>
+    <% end %>
+  </div>
+  <div>
+    <p>Total food items: <%= recipe.recipe_foods.count %></p>
+    <p>Total price: $<%= recipe.give_price %></p>
+  </div>
+</div>

@@ -13,3 +13,69 @@
  *= require_tree .
  *= require_self
  */
+.navbar {
+  background-color: rgb(44, 58, 44);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 5%;
+}
+
+#navbarSupportedContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  display: flex;
+}
+
+ul li {
+  list-style: none;
+  margin-right: 20px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Navbar Brand */
+#navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  width: 20%;
+  text-decoration: none;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Active Link Style */
+.navbar-nav .nav-item.active .nav-link {
+  color: #fff; /* Change the active link color */
+}
+
+.navbar-signout {
+  background-color: #0000;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-nav .nav-item:last-child {
+  margin-right: 15px;
+}
+
+.page-container {
+  width: 70%;
+  background: linear-gradient(rgb(88, 129, 87), rgb(58, 90, 64));
+  margin: auto;
+}
