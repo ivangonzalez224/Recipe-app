@@ -11,5 +11,10 @@ RSpec.describe 'UsersController', type: :request do
         get '/users/failed_path'
         expect(response).to have_http_status(404)
       end
+
+      it 'returns a successful response' do
+        get '/users/sign_in'
+        expect(response).to have_http_status(200)
+      end  
   end
 end  
