@@ -18,4 +18,10 @@ RSpec.describe 'new users session', type: :feature do
 
     expect(page).to have_content('Log in')
   end
-end  
+
+  it 'displays the correct selector when initiating session' do
+    visit user_session_path
+
+    expect(page).to have_selector('input.post-add-btn')
+  end
+end
