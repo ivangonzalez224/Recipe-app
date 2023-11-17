@@ -6,9 +6,12 @@
   </div>
 
   <% if @recipe.user == current_user %>
-    <div class="public-toggle">
-      <label class=" " for="toggle1">Public</label>
-      <input class="public-checkbox" type="checkbox" id="public-toggle" data-recipe-id="<%= @recipe.id %>" class="public-checkbox" <%= @recipe.public ? 'checked' : '' %> data-turbo-action="false">
+  <div class="toggle-div">
+    <p>Public: </p> 
+    <label class="toggle">
+      <input type="checkbox" class="public-checkbox" data-recipe-id="<%= @recipe.id %>" <%= @recipe.public ? 'checked' : '' %>>
+      <span class="slider"></span>
+    </label>
     </div>
   <% end %>
 </div>
