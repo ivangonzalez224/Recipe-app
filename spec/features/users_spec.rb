@@ -12,4 +12,10 @@ RSpec.describe 'new users session', type: :feature do
 
     expect(page).to have_selector('input.input-food')
   end
+
+  it 'displays the correct content when initiating session' do
+    visit user_session_path
+
+    expect(page).to have_content('Log in')
+  end
 end  
