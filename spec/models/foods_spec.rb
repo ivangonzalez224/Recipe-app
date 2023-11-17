@@ -8,5 +8,10 @@ RSpec.describe Food, type: :model do
       food = Food.new(user: user, name: 'Apple', measurement_unit: 'g', price: 3, quantity: 500)
       expect(food).to be_valid
     end
+
+    it 'is not valid with valid without user association' do
+        food = Food.new(name: 'Apple', measurement_unit: 'g', price: 3, quantity: 500)
+        expect(food).to_not be_valid
+      end
   end  
 end    
