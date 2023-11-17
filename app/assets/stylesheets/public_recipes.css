@@ -2,10 +2,18 @@
   padding: 1em;
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 70%;
   border: 1px solid black;
   margin: 1em;
-  background-color: rgb(163, 177, 138);
+  background-color: rgb(218, 215, 205);
+}
+
+.main-title{
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+
 }
 
 .public-recipe h2{
@@ -32,6 +40,7 @@
   justify-content: space-between;
   width: 65%;
   margin: 30px;
+  background-color: rgb(218, 215, 205);
 }
 
 .table-buttons {
@@ -41,7 +50,7 @@
 }
 
 .recipe-foods-table {
-  width: 81%;
+  width: 90%;
 }
 
 .tall-container {

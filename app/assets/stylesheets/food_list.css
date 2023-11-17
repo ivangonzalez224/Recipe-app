@@ -6,6 +6,8 @@ body {
   overflow-x: hidden;
   box-sizing: border-box;
   background-image: url("food-background.jpg");
+  font-weight: 500;
+  font-size: 1.1em;
 }
 
 .main-container {
@@ -118,6 +120,7 @@ tr:nth-child(odd) {
 
 .add-food-btn {
   width: 15%;
+  min-width: fit-content;
   height: 40px;
   line-height: 40px;
   margin: 3% auto;
@@ -133,7 +136,6 @@ tr:nth-child(odd) {
 
 .add-food-btn:hover {
   background-color: #fff;
-  border: 1px solid rgb(61, 170, 49);
   color: rgb(61, 170, 49);
 }
 
