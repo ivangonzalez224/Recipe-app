@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     respond_to do |format|
       if @recipe.update(recipe_params)
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.'}
+        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
         format.json { render json: { success: true } }
       else
         format.json { render json: { success: false, errors: @recipe.errors }, status: :unprocessable_entity }
