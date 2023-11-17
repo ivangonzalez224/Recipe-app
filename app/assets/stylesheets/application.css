@@ -73,3 +73,9 @@ ul li a {
 .navbar-nav .nav-item:last-child {
   margin-right: 15px;
 }
+
+.page-container {
+  width: 70%;
+  background: linear-gradient(rgb(88, 129, 87), rgb(58, 90, 64));
+  margin: auto;
+}

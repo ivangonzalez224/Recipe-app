@@ -1,32 +1,25 @@
-<div class="container food-container">
-    <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: "add-food-btn" %>
-
+<div class="recipe-foods-table">
     <table>
       <thead>
         <tr>
-        <th class="food-name">
-            <div class="header-container">
-                Name
-            </div>
-            </th>
-        <th class="quantity">Quantity</th>
-        <th class="price">Value</th>
-        <th class="actions">Actions</th>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Actions</th>
         </tr>
       </thead>
-    <tbody>
-        <% foods.each do |item| %>
-        <tr>
-            <td class="food-name"><%= item.food.name %></td>
-            <td class="quantity"><%= item.quantity %> <%= item.food.measurement_unit %></td>
-            <td class="price">$<%= item.quantity * item.food.price %></td>
-            <td class=" ">
-                <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item) %>
-                <%= "&nbsp;" "&nbsp;".html_safe %>
-                <%= button_to "Remove", [@recipe, item], method: :delete %>
+      <tbody>
+        <% @foods.each do |item| %>
+          <tr>
+            <td><%= item.food.name %></td>
+            <td><%= item.quantity %> <%= item.food.measurement_unit %></td>
+            <td>$<%= item.quantity * item.food.price %></td>
+            <td class="action-buttons">
+              <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, item), class: 'button-link'%>
+              <%= button_to "Remove", [@recipe, item], method: :delete, class: 'button-link' %>
             </td>
-        </tr>
+          </tr>
         <% end %>
-    </tbody>
+      </tbody>
     </table>
-  </div>
+  </div> 

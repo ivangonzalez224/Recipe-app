@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :recipe_foods
+  has_many :recipe_foods, dependent: :destroy
 
   validates :name, presence: true
   validates :preparation_time, presence: true
@@ -16,5 +16,9 @@ class Recipe < ApplicationRecord
       prices.push(food_price)
     end
     tot_prices.sum
+  end
+
+  def give_price
+    recipe_foods.sum { |rf| rf.quantity * rf.food.price }
   end
 end

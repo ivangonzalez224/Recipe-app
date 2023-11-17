@@ -41,17 +41,17 @@ class RecipeFoodsController < ApplicationController
 
   # PATCH/PUT /recipe_foods/1 or /recipe_foods/1.json
   def update
-    @recipe_food = RecipeFood.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     respond_to do |format|
-      if @recipe_food.update(recipe_food_params)
+      if @recipe.update(recipe_params)
         format.html do
-          redirect_to recipe_recipe_food_path(@recipe, @recipe_food),
-                      notice: 'Recipe food was successfully updated.'
+          # Redirect for regular HTML requests
+          redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.'
         end
-        format.json { render :show, status: :ok, location: @recipe_food }
+        format.json { render json: { success: true } }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
+        format.json { render json: { success: false, errors: @recipe.errors }, status: :unprocessable_entity }
       end
     end
   end
