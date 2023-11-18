@@ -63,7 +63,10 @@ class RecipesController < ApplicationController
 
   # Public Recipes
   def public_recipes
-    @recipes = Recipe.where(public: true).includes(:user)
+    @recipes = Recipe.includes(:user, :recipe_foods)
+                    .joins(:recipe_foods)
+                    .where(public: true)
+                    .distinct
   end
 
   def shopping_list
