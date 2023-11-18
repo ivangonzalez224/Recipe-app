@@ -84,3 +84,4 @@ production:
   database: recipegroup_production
   username: recipegroup
   password: <%= ENV["recipegroup"] %>
+  url: <%= ENV['DATABASE_URL'] %>
