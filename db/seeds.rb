@@ -9,21 +9,21 @@
 #   end
 # Create User1
 user1 = User.create!(
-  username: 'user1',
+  name: 'user1',
   email: 'user1@example.com',
   password: 'password123'
 )
 
 # Create User2
 user2 = User.create!(
-  username: 'user2',
+  name: 'user2',
   email: 'user2@example.com',
   password: 'password123'
 )
 
 # Create User3
 user3 = User.create!(
-  username: 'user3',
+  name: 'user3',
   email: 'user3@example.com',
   password: 'password123'
 )
